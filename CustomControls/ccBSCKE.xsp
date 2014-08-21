@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:scriptBlock id="scriptBlockCKEditor">
+		<xp:this.value>
+      <![CDATA[
+         require( ['dojo/_base/declare', 'ibm/xsp/widget/layout/xspCKEditor'], function( declare, xspCKEditor ){
+            return declare( 'org.openntf.filesilo.CKEDITOR', xspCKEditor, {
+               constructor: function ckew_ctor(/*Object*/options){
+                  CKEDITOR.timestamp = '';
+               }
+            });    
+         });
+      ]]>
+		</xp:this.value>
+	</xp:scriptBlock>
+</xp:view>

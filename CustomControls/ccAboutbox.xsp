@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex"
+	xmlns:xpt="http://www.openntf.org/xsp/xpt">
+	<div id="aboutbox" class="modal fade" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						x
+					</button>
+					<xp:text disableTheme="true"
+						styleClass="modal-title panel-title" tagName="h3"
+						value="#{javascript:@DbTitle()}">
+					</xp:text>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-lg-3">
+							<xp:image url="/1397947794_info_black.png"
+								id="image1">
+							</xp:image>
+						</div>
+						<div class="col-lg-9">
+							<p>Author: Oliver Busse</p>
+							<p>
+								<a href="http://about.me/oliverbusse" target="_blank">
+									http://about.me/oliverbusse
+						</a>
+							</p>
+							<p>
+								This software is licensed under the Apache
+								License 2.0
+					</p>
+							<p>
+								Made with love and IBM XPages, using&#160;
+								<a href="http://getbootstrap.com" target="_blank">
+									Twitter Bootstrap 3
+								</a>
+							</p>
+							<p>This website uses the XPages Extension Library,
+								Bootstrap4XPages Plugin and the OpenNTF Domino API</p>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-block btn-custom-green"
+						data-dismiss="modal">
+						OK
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</xp:view>

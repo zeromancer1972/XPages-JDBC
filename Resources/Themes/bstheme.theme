@@ -1,0 +1,73 @@
+<theme extends="bootstrapv3.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="platform:/plugin/com.ibm.designer.domino.stylekits/schema/stylekit.xsd">
+
+	<resource>
+		<content-type>text/css</content-type>
+		<href>bs3_tweaks.css</href>
+	</resource>
+
+	<!-- FontAwesome -->
+	<resource rendered="#{javascript:context.getUrl().getScheme().equals('http')}">
+		<content-type>text/css</content-type>
+		<href>http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css</href>
+	</resource>
+	<resource rendered="#{javascript:context.getUrl().getScheme().equals('https')}">
+		<content-type>text/css</content-type>
+		<href>https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css</href>
+	</resource>
+
+	<!-- LongPress -->
+	<resource>
+		<content-type>application/x-javascript</content-type>
+		<href>long-press-master/js/jquery.mousewheel.js</href>
+	</resource>
+	<resource>
+		<content-type>application/x-javascript</content-type>
+		<href>long-press-master/js/jquery.longpress.js</href>
+	</resource>
+	<resource>
+		<content-type>application/x-javascript</content-type>
+		<href>long-press-master/js/plugins.js</href>
+	</resource>
+	<resource>
+		<content-type>text/css</content-type>
+		<href>long-press-master/css/app.css</href>
+	</resource>
+
+	<resource>
+		<content-type>text/css</content-type>
+		<href>long-press-master/css/normalize.css</href>
+	</resource>
+	<!-- longpress end -->
+
+	<resource>
+		<content-type>application/x-javascript</content-type>
+		<href>core.js</href>
+	</resource>
+
+	<control override="false">
+		<!-- set a default page name unless you define it in the page itself -->
+		<name>ViewRoot</name>
+		<property>
+			<name>pageTitle</name>
+			<value>#{javascript:@DbTitle()}</value>
+		</property>
+	</control>
+	<control>
+		<!-- aligns text labels in a form table -->
+		<name>HtmlTr</name>
+		<property mode="concat">
+			<name>style</name>
+			<value>vertical-align:top</value>
+		</property>
+	</control>
+
+	<!-- View DataTable -->
+	<control>
+		<name>DataTable.ViewPanel</name>
+		<property>
+			<name>dataTableStyleClass</name>
+			<value>table table-hover</value>
+		</property>
+	</control>
+</theme>

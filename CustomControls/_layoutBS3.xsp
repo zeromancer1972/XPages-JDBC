@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:this.beforePageLoad><![CDATA[#{javascript:var url = facesContext.getExternalContext().getRequest().getRequestURI();
+if(url.indexOf(".xsp")==-1){
+	if(url.endsWith("/")){
+		url = url.substr(0, url.length-1)
+	}
+	context.redirectToPage(url+view.getPageName())
+}}]]></xp:this.beforePageLoad>
+
+	<!-- navbar -->
+
+
+	<xp:this.beforeRenderResponse><![CDATA[#{javascript:context.setLocale(Locale.GERMANY);}]]></xp:this.beforeRenderResponse>
+	<nav
+		class="navbar navbar-fixed-top #{javascript:compositeData.navbarTopInverse?'navbar-inverse':'navbar-default'}"
+		role="navigation">
+		<!-- replace with container-fluid to get the full page width -->
+		<div class="#{javascript:compositeData.fullWidth?'container-fluid':'container'}">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle"
+					data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.xsp">
+					<span class="fa fa-coffee"></span>
+					&#160;
+					<xp:text disableTheme="true"
+						value="XPages&#160;JDBC">
+					</xp:text>
+				</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<xp:repeat id="repeat1" rows="30"
+						disableOutputTag="true"
+						value="#{javascript:navigation.navigation}" var="nav">
+						<xp:panel tagName="li"
+							rendered="#{javascript:nav.visible}">
+							<xp:this.styleClass><![CDATA[#{javascript:view.getPageName().indexOf(nav.getUrl())!=-1 ? "active" : ""}]]></xp:this.styleClass>
+
+							<a href="#{javascript:nav.getUrl()}"
+								target="#{javascript:nav.isNewWindow()?'_blank':''}">
+								<span
+									class="#{javascript:nav.getIcon()}">
+								</span>
+								&#160;
+								<xp:text escape="true"
+									id="computedField1" disableTheme="true"
+									value="#{javascript:nav.getLabel()}">
+								</xp:text>
+							</a>
+						</xp:panel>
+					</xp:repeat>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container -->
+	</nav>
+	<!-- color bar -->
+	<xp:div rendered="#{javascript:!compositeData.hideHelpArea}"
+		disableTheme="true" styleClass="pagehelp"
+		style="background-color:#{javascript:compositeData.color}">
+		<div class="#{javascript:compositeData.fullWidth?'container-fluid':'container'}">
+			<xp:callback facetName="facetHelp" id="facetHelp"></xp:callback>
+		</div>
+	</xp:div>
+	<xp:div style="padding-top:70px;"
+		rendered="#{javascript:compositeData.hideHelpArea}">
+	</xp:div>
+	<!-- main content -->
+	<div id="content" class="#{javascript:compositeData.fullWidth?'container-fluid':'container'}">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<xp:div style="background-color:#fff">
+					<xp:this.styleClass><![CDATA[#{javascript:compositeData.hideLeftColumn && compositeData.hideRightColumn ? 'col-lg-12':'col-lg-9'}]]></xp:this.styleClass>
+					<xp:panel tagName="h1" disableTheme="true"
+						rendered="#{javascript:compositeData.pageTitle!=null}">
+
+						<xp:text escape="false" id="computedField3"
+							disableTheme="true"
+							value="#{javascript:compositeData.pageTitle}">
+						</xp:text>
+					</xp:panel>
+					<xp:callback facetName="facetMiddle"
+						id="facetMiddle">
+					</xp:callback>
+				</xp:div>
+				<xp:div styleClass="col-lg-3" id="rightcol">
+					<xp:this.rendered><![CDATA[#{javascript:!(compositeData.hideLeftColumn && compositeData.hideRightColumn)}]]></xp:this.rendered>
+					<xp:callback facetName="facetLeft" id="facetLeft"
+						rendered="#{javascript:!compositeData.hideLeftColumn}">
+					</xp:callback>
+					<xp:callback facetName="facetRight" id="facetRight"
+						rendered="#{javascript:!compositeData.hideRightColumn}">
+					</xp:callback>
+				</xp:div>
+			</div>
+		</div>
+	</div>
+	<!-- footer -->
+	<nav id="footer"
+		class="navbar navbar-fixed-bottom #{javascript:compositeData.navbarBottomInverse?'navbar-inverse':'navbar-default'}"
+		role="navigation">
+		<div class="#{javascript:compositeData.fullWidth?'container-fluid':'container'}">
+			<ul class="nav navbar-nav" style="margin-left:-14px">
+				<xp:repeat id="repeat2" rows="30"
+					disableOutputTag="true" value="#{javascript:footer.navigation}"
+					var="nav">
+					<xp:panel tagName="li"
+						rendered="#{javascript:nav.visible}">
+						<xp:this.styleClass><![CDATA[#{javascript:view.getPageName().indexOf(nav.getUrl())!=-1 ? "active" : ""}]]></xp:this.styleClass>
+						<a href="#{javascript:nav.getUrl()}"
+							target="#{javascript:nav.isNewWindow()?'_blank':''}">
+							<xp:text escape="true" id="computedField2"
+								disableTheme="true" value="#{javascript:nav.getLabel()}">
+							</xp:text>
+						</a>
+					</xp:panel>
+				</xp:repeat>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<xp:link escape="true" id="link1">
+
+						<xp:this.attrs>
+							<xp:attr name="data-target"
+								value="#aboutbox">
+							</xp:attr>
+							<xp:attr name="data-toggle" value="modal">
+							</xp:attr>
+						</xp:this.attrs>
+						<xp:this.text><![CDATA[#{javascript:"© 2014 Oliver Busse"}]]></xp:this.text>
+					</xp:link>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<xc:ccAboutbox></xc:ccAboutbox>
+
+	<xe:keepSessionAlive id="keepSessionAlive1"></xe:keepSessionAlive>
+
+</xp:view>

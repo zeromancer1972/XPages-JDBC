@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.2" replicaid="C1257D3B00631771" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="2a6" sequence="17" unid="7249459850E2B78FC1257D0D0001E71A">
+<created><datetime dst="true">20140706T022046,98+02</datetime></created>
+<modified><datetime dst="true">20140821T201030,34+02</datetime></modified>
+<revised><datetime dst="true">20140706T024353,69+02</datetime></revised>
+<lastaccessed><datetime dst="true">20140821T201030,34+02</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20140821T201030,34+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
+<wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
+<item name="$TITLE"><text>slate.theme</text></item>
+<item name="$Flags"><text>34567Cg~`</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>slate.theme</text></item>
+<item name="$CSSFiles"><textlist><text>slate/bootstrap.css</text></textlist></item></note>

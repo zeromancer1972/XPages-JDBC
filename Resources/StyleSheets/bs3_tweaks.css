@@ -1,0 +1,196 @@
+body {
+	background-color: #f0f0f0;
+}
+
+h1,h2 {
+	margin-top: 10px;
+}
+
+#rightcol img {
+	
+}
+
+.xspPagerContainer {
+	background-color: transparent;
+}
+
+.xspPagerLeft {
+	background-color: transparent;
+	padding: 10px 0 10px 0;
+	font-weight: bold;
+}
+
+.ckeditor * {
+	box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	-ms-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+}
+
+@media ( min-width : 992px) {
+	.modal-lg {
+		width: 900px;
+	}
+}
+
+.pagehelp {
+	background-color: #888;
+	margin-bottom: 20px;
+	color: #fff;
+	min-height: 110px;
+	padding-top: 60px;
+}
+
+.pagehelp a,.pagehelp a:link,.pagehelp a:visited {
+	color: #fff;
+}
+
+#content {
+	margin-bottom: 50px;
+}
+
+.msg {
+	display: block;
+}
+
+.actionbar .btn {
+	margin-right: 4px;
+}
+
+.btn-custom-green {
+	background-color: #abd100;
+	color: white;
+	border-color: #abd100;
+}
+
+.btn-custom-green:hover,.btn-custom-green:focus,.btn-custom-green:active
+	{
+	background-color: #C4DF4D;
+	border-color: #C4DF4D;
+	color: white;
+}
+
+#footer {
+	font-size: 0.8em;
+}
+
+.actionbar { /*border-bottom: solid 1px #ccc;*/
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+
+.tab-pane {
+	padding: 10px;
+	border-left: solid 1px #ddd;
+	border-right: solid 1px #ddd;
+	border-bottom: solid 1px #ddd;
+	background-color: #fff;
+}
+
+.logindialog {
+	-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+	-moz-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+}
+
+th {
+	font-weight: bold;
+}
+
+.tundra .dijitSelect .dijitButtonContents,.tundra .dijitSelect,.tundra .dijitTextBox
+	{
+	background: none;
+}
+
+.dijitPlaceHolder {
+	font-style: inherit;
+}
+
+.panel-title {
+	font-weight: bold;
+}
+
+.tiny td {
+	font-size: 0.8em;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.panel-heading span {
+	margin-top: -20px;
+	font-size: 15px;
+}
+
+.form-control {
+	margin-bottom: 10px;
+}
+
+.form-group label {
+	display: block;
+}
+
+.form-group label.left {
+	display: inline-table;
+}
+
+.disabled {
+	background-color: #eee;
+	cursor: not-allowed;
+}
+
+a.nav-disabled {
+	cursor: not-allowed;
+}
+
+/*
+.modal-header {
+	background-color: #444;
+	color: #fff;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	-moz-border-top-left-radius: 3px;
+	-moz-border-top-right-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	border-color: #666;
+}
+*/
+.table th span.xspTextComputedField {
+	font-weight: bold;
+}
+
+.table .xspColumn {
+	padding: 8px !important;
+}
+
+/* hp tweaks */
+.snippet {
+	cursor: pointer;
+}
+
+.commentSection-wide-header {
+	cursor: pointer;
+}
+
+/* BS pager */
+.pagination>.active>a,.pagination>.active>span,.pagination>.active>a:hover,.pagination>.active>span:hover,.pagination>.active>a:focus,.pagination>.active>span:focus
+	{
+	z-index: 2;
+	color: #999999;
+	background-color: #f5f5f5;
+	border-color: #dddddd;
+	cursor: pointer;
+}
+
+.pagination {
+	margin: 0;
+}
+
+.bigicon {
+	font-size: 94px;
+	opacity: 0.2;
+	filter: alpha(opacity =           20);
+	margin: 0 0 0 20px;
+}
