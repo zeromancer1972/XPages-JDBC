@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom"
 	xmlns:xe="http://www.ibm.com/xsp/coreex">
-	<xc:_layoutBS3 id="page" navbarTopInverse="true" color="#000">
+	<xp:this.resources>
+		<xp:script src="/postgres.jss" clientSide="false"></xp:script>
+	</xp:this.resources>
+	<xc:_layoutBS3 id="page" navbarTopInverse="true" color="#000"
+		hideLeftColumn="true" hideRightColumn="true">
 		<xp:this.facets>
 			<xp:div xp:key="facetRight">
 				<xc:ccPanel footer="false" hideBody="false" title="About"
@@ -13,120 +17,155 @@
 						</xp:div>
 					</xp:this.facets>
 				</xc:ccPanel>
-				<xc:ccPanel footer="false" hideBody="false" title="Add record">
-					<xp:this.facets>
-						<xp:div xp:key="body">
-							<div class="form-group">
-								<label>Lastname</label>
-								<xp:inputText id="lastname" autocomplete="off">
-								</xp:inputText>
-							</div>
-							<div class="form-group">
-								<label>Firstname</label>
-								<xp:inputText id="firstname" autocomplete="off">
-								</xp:inputText>
-							</div>
-							<xp:button value="Add record" id="button1" styleClass="btn btn-success">
-								<xp:eventHandler event="onclick"
-									submit="true" refreshMode="partial" refreshId="dataPanel">
-									<xp:this.action><![CDATA[#{javascript:var values:java.util.HashMap = new java.util.HashMap();
+
+
+			</xp:div>
+			<xp:div xp:key="facetMiddle">
+				<xp:div id="widgets" styleClass="row">
+					<div class="col-sm-4">
+						<xc:ccPanel footer="false" hideBody="false" title="Add record">
+							<xp:this.facets>
+								<xp:div xp:key="body">
+									<div class="form-group">
+										<label>Lastname</label>
+										<xp:inputText id="lastname" autocomplete="off">
+										</xp:inputText>
+									</div>
+									<div class="form-group">
+										<label>Firstname</label>
+										<xp:inputText id="firstname" autocomplete="off">
+										</xp:inputText>
+									</div>
+									<xp:button value="Add record" id="button1"
+										styleClass="btn btn-success">
+										<xp:eventHandler event="onclick" submit="true"
+											refreshMode="partial" refreshId="dataPanel">
+											<xp:this.action><![CDATA[#{javascript:var values:java.util.HashMap = new java.util.HashMap();
 values.put("lastname", getComponent("lastname").getValue());
 values.put("firstname", getComponent("firstname").getValue());
 @JdbcInsert("postgres", "names", values);
 var c = getComponent("dataPanel");
 var ds = c.getData();
 ds.get(0).refresh();}]]></xp:this.action>
-								</xp:eventHandler>
-							</xp:button>
-						</xp:div>
-					</xp:this.facets>
-				</xc:ccPanel>
-				<xc:ccPanel footer="false" hideBody="false" title="Delete record">
-					<xp:this.facets>
-						<xp:div xp:key="body">
-							<div class="form-group">
-								<label>ID</label>
-								<xp:inputText id="deletionid" autocomplete="off">
-								</xp:inputText>
-							</div>
-							<xp:button value="Delete record" id="button2"
-								styleClass="btn btn-danger">
-								<xp:eventHandler event="onclick"
-									submit="true" refreshMode="partial" refreshId="dataPanel">
-									<xp:this.action><![CDATA[#{javascript:@JdbcDelete("postgres", "names", "id=?", parseInt(getComponent("deletionid").getValue()));
-var c = getComponent("dataPanel");
-var ds = c.getData();
-ds.get(0).refresh();}]]></xp:this.action>
-								</xp:eventHandler>
-							</xp:button>
-						</xp:div>
-					</xp:this.facets>
-				</xc:ccPanel>
-				<xc:ccPanel footer="false" hideBody="false" title="Update record">
-					<xp:this.facets>
-						<xp:div xp:key="body">
-							<div class="form-group">
-								<label>ID</label>
-								<xp:inputText id="updateId" autocomplete="off">
-								</xp:inputText>
-								<label>Lastname</label>
-								<xp:inputText id="updateLastname" autocomplete="off">
-								</xp:inputText>
-								<label>Firstname</label>
-								<xp:inputText id="updateFirstname" autocomplete="off">
-								</xp:inputText>
-							</div>
-							<xp:button value="Update record" id="button3"
-								styleClass="btn btn-warning">
-								<xp:eventHandler event="onclick"
-									submit="true" refreshMode="partial" refreshId="dataPanel">
-									<xp:this.action><![CDATA[#{javascript:var values:java.util.HashMap = new java.util.HashMap();
+										</xp:eventHandler>
+									</xp:button>
+								</xp:div>
+							</xp:this.facets>
+						</xc:ccPanel>
+					</div>
+
+					<div class="col-sm-4">
+						<xc:ccPanel footer="false" hideBody="false" title="Update record">
+							<xp:this.facets>
+								<xp:div xp:key="body">
+									<div class="form-group">
+										<label>ID</label>
+										<xp:inputText id="updateId" autocomplete="off">
+										</xp:inputText>
+										<label>Lastname</label>
+										<xp:inputText id="updateLastname" autocomplete="off">
+										</xp:inputText>
+										<label>Firstname</label>
+										<xp:inputText id="updateFirstname" autocomplete="off">
+										</xp:inputText>
+									</div>
+									<xp:button value="Update record" id="button3"
+										styleClass="btn btn-warning">
+										<xp:eventHandler event="onclick" submit="true"
+											refreshMode="partial" refreshId="dataPanel">
+											<xp:this.action><![CDATA[#{javascript:var values:java.util.HashMap = new java.util.HashMap();
 values.put("lastname", getComponent("updateLastname").getValue());
 values.put("firstname", getComponent("updateFirstname").getValue());
 @JdbcUpdate("postgres", "names", values, "id=?", parseInt(getComponent("updateId").getValue()));
 var c = getComponent("dataPanel");
 var ds = c.getData();
 ds.get(0).refresh();}]]></xp:this.action>
-								</xp:eventHandler>
-							</xp:button>
-						</xp:div>
-					</xp:this.facets>
-				</xc:ccPanel>
-			</xp:div>
-			<xp:div xp:key="facetMiddle">
+										</xp:eventHandler>
+									</xp:button>
+								</xp:div>
+							</xp:this.facets>
+						</xc:ccPanel>
+					</div>
+
+					<div class="col-sm-4">
+						<xc:ccPanel footer="false" hideBody="false" title="Delete record">
+							<xp:this.facets>
+								<xp:div xp:key="body">
+									<div class="form-group">
+										<label>ID</label>
+										<xp:inputText id="deletionid" autocomplete="off">
+										</xp:inputText>
+									</div>
+									<xp:button value="Delete record" id="button2"
+										styleClass="btn btn-danger">
+										<xp:eventHandler event="onclick" submit="true"
+											refreshMode="partial" refreshId="dataPanel">
+											<xp:this.action><![CDATA[#{javascript:@JdbcDelete("postgres", "names", "id=?", parseInt(getComponent("deletionid").getValue()));
+var c = getComponent("dataPanel");
+var ds = c.getData();
+ds.get(0).refresh();}]]></xp:this.action>
+										</xp:eventHandler>
+									</xp:button>
+								</xp:div>
+							</xp:this.facets>
+						</xc:ccPanel>
+						<xc:ccPanel footer="false" hideBody="false" title="Refresh">
+							<xp:this.facets>
+								<xp:button value="Refresh data" id="button4" xp:key="body"
+									styleClass="btn btn-info">
+									<xp:eventHandler event="onclick" submit="true"
+										refreshMode="partial" refreshId="dataPanel">
+										<xp:this.action><![CDATA[#{javascript:var c = getComponent("dataPanel");
+var ds = c.getData();
+ds.get(0).refresh();}]]></xp:this.action>
+									</xp:eventHandler>
+								</xp:button>
+							</xp:this.facets>
+
+						</xc:ccPanel>
+					</div>
+
+				</xp:div>
 				<xp:panel id="dataPanel">
 					<xp:this.data>
 						<xe:jdbcRowSet connectionName="postgres" var="jdbcdata"
 							sqlQuery="SELECT * from names ORDER BY id">
 						</xe:jdbcRowSet>
 					</xp:this.data>
-					<xp:dataTable id="data" rows="30" var="person"
+					<xp:dataTable id="data" rows="10" var="person"
 						styleClass="table table-condensed table-striped table-hover"
 						value="#{javascript:jdbcdata}">
 						<xp:this.facets>
-							<xp:pager partialRefresh="true"
-								layout="Previous Group Next" xp:key="footer" id="pager1">
+							<xp:pager partialRefresh="true" layout="Previous Group Next"
+								xp:key="footer" id="pager1">
 							</xp:pager>
 						</xp:this.facets>
-
-
 						<xp:column id="column1">
-							<xp:label
-								value="#{javascript:person.lastname}" id="label1">
-							</xp:label>
+							<xp:link text="#{javascript:person.lastname}" id="label1">
+								<xp:eventHandler event="onclick" submit="true"
+									refreshMode="partial" refreshId="widgets">
+									<xp:this.action><![CDATA[#{javascript:openRecord(person.id)}]]></xp:this.action>
+								</xp:eventHandler>
+							</xp:link>
 						</xp:column>
 						<xp:column id="column2">
-							<xp:label
-								value="#{javascript:person.firstname}" id="label2">
-							</xp:label>
+							<xp:link text="#{javascript:person.firstname}" id="label2">
+								<xp:eventHandler event="onclick" submit="true"
+									refreshMode="partial" refreshId="widgets">
+									<xp:this.action><![CDATA[#{javascript:openRecord(person.id)}]]></xp:this.action>
+								</xp:eventHandler>
+							</xp:link>
 						</xp:column>
 						<xp:column id="column3">
-							<xp:label value="#{javascript:person.id}"
-								id="label3">
+							<xp:link text="#{javascript:person.id}" id="label3">
 								<xp:this.converter>
 									<xp:convertNumber></xp:convertNumber>
 								</xp:this.converter>
-							</xp:label>
+								<xp:eventHandler event="onclick" submit="true"
+									refreshMode="partial" refreshId="widgets">
+									<xp:this.action><![CDATA[#{javascript:openRecord(person.id)}]]></xp:this.action>
+								</xp:eventHandler>
+							</xp:link>
 						</xp:column>
 					</xp:dataTable>
 				</xp:panel>
