@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.2" replicaid="C1257D3B00631771" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="6de" sequence="3" unid="5B362985623A1D9DC1257D3F00600315">
+<created><datetime dst="true">20140825T192842,45+02</datetime></created>
+<modified><datetime dst="true">20140825T192843,66+02</datetime></modified>
+<revised><datetime dst="true">20140825T192843,65+02</datetime></revised>
+<lastaccessed><datetime dst="true">20140825T192843,66+02</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20140825T192842,46+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
+<wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>org/openntf/jdbc/DataConnector.java</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>org/openntf/jdbc/DataConnector.java</text></item></note>

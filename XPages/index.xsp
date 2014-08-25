@@ -129,7 +129,7 @@ ds.get(0).refresh();}]]></xp:this.action>
 				<xp:panel id="dataPanel">
 					<xp:this.data>
 						<xe:jdbcRowSet connectionName="postgres" var="jdbcdata"
-							sqlQuery="SELECT * from names ORDER BY id">
+							sqlQuery="SELECT * from names ORDER BY lastname">
 						</xe:jdbcRowSet>
 					</xp:this.data>
 					<xp:dataTable id="data" rows="10" var="person"

@@ -22,7 +22,7 @@ public class NavigationFooter implements Serializable {
 		String adminDoc = "";
 		Document doc = null;
 		this.navigation = new ArrayList<Page>();
-		
+		this.navigation.add(new Page("OpenNTF Project", "http://www.openntf.org/main.nsf/blog.xsp?permaLink=NHEF-9N7CKD", "", true));
 
 		try {
 			admin = ExtLibUtil.getCurrentDatabase().queryAccessRoles(

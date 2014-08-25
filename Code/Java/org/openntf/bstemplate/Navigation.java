@@ -11,7 +11,7 @@ public class Navigation implements Serializable {
 
 	public Navigation() {
 		this.navigation = new ArrayList<Page>();
-		this.navigation.add(new Page("OpenNTF Project", "http://www.openntf.org/main.nsf/blog.xsp?permaLink=NHEF-9N7CKD", "", true));
+		this.navigation.add(new Page("JNDI", "jndi.xsp", "", false));
 
 	}
 
