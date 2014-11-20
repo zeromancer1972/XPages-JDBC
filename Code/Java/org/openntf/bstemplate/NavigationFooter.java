@@ -23,6 +23,7 @@ public class NavigationFooter implements Serializable {
 		Document doc = null;
 		this.navigation = new ArrayList<Page>();
 		this.navigation.add(new Page("OpenNTF Project", "http://www.openntf.org/main.nsf/blog.xsp?permaLink=NHEF-9N7CKD", "", true));
+		this.navigation.add(new Page("Github Project", "https://github.com/zeromancer1972/XPages-JDBC", "", true));
 
 		try {
 			admin = ExtLibUtil.getCurrentDatabase().queryAccessRoles(

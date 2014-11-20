@@ -38,12 +38,12 @@
 									</div>
 									<xp:button value="Add record" id="button1"
 										styleClass="btn btn-success">
-										<xp:eventHandler event="onclick" submit="true"
-											refreshMode="partial" refreshId="dataPanel">
+										<xp:eventHandler event="onclick"
+											submit="true" refreshMode="partial" refreshId="dataPanel">
 											<xp:this.action><![CDATA[#{javascript:var values:java.util.HashMap = new java.util.HashMap();
 values.put("lastname", getComponent("lastname").getValue());
 values.put("firstname", getComponent("firstname").getValue());
-@JdbcInsert("postgres", "names", values);
+@JdbcInsert("postgres", "xpagesdemo.names", values);
 var c = getComponent("dataPanel");
 var ds = c.getData();
 ds.get(0).refresh();}]]></xp:this.action>
@@ -71,12 +71,12 @@ ds.get(0).refresh();}]]></xp:this.action>
 									</div>
 									<xp:button value="Update record" id="button3"
 										styleClass="btn btn-warning">
-										<xp:eventHandler event="onclick" submit="true"
-											refreshMode="partial" refreshId="dataPanel">
+										<xp:eventHandler event="onclick"
+											submit="true" refreshMode="partial" refreshId="dataPanel">
 											<xp:this.action><![CDATA[#{javascript:var values:java.util.HashMap = new java.util.HashMap();
 values.put("lastname", getComponent("updateLastname").getValue());
 values.put("firstname", getComponent("updateFirstname").getValue());
-@JdbcUpdate("postgres", "names", values, "id=?", parseInt(getComponent("updateId").getValue()));
+@JdbcUpdate("postgres", "xpagesdemo.names", values, "id=?", parseInt(getComponent("updateId").getValue()));
 var c = getComponent("dataPanel");
 var ds = c.getData();
 ds.get(0).refresh();}]]></xp:this.action>
@@ -98,13 +98,23 @@ ds.get(0).refresh();}]]></xp:this.action>
 									</div>
 									<xp:button value="Delete record" id="button2"
 										styleClass="btn btn-danger">
-										<xp:eventHandler event="onclick" submit="true"
-											refreshMode="partial" refreshId="dataPanel">
-											<xp:this.action><![CDATA[#{javascript:@JdbcDelete("postgres", "names", "id=?", parseInt(getComponent("deletionid").getValue()));
+										<xp:eventHandler event="onclick"
+											submit="true" refreshMode="partial" refreshId="dataPanel">
+											<xp:this.action>
+
+												<xp:actionGroup>
+													<xp:confirm
+														message="Really?">
+													</xp:confirm>
+
+													<xp:executeScript>
+														<xp:this.script><![CDATA[#{javascript:@JdbcDelete("postgres", "xpagesdemo.names", "id=?", parseInt(getComponent("deletionid").getValue()));
 var c = getComponent("dataPanel");
 var ds = c.getData();
-ds.get(0).refresh();}]]></xp:this.action>
-										</xp:eventHandler>
+ds.get(0).refresh();}]]></xp:this.script>
+													</xp:executeScript>
+												</xp:actionGroup>
+											</xp:this.action></xp:eventHandler>
 									</xp:button>
 								</xp:div>
 							</xp:this.facets>
@@ -128,8 +138,9 @@ ds.get(0).refresh();}]]></xp:this.action>
 				</xp:div>
 				<xp:panel id="dataPanel">
 					<xp:this.data>
-						<xe:jdbcRowSet connectionName="postgres" var="jdbcdata"
-							sqlQuery="SELECT * from names ORDER BY lastname">
+						<xe:jdbcRowSet connectionName="postgres"
+							var="jdbcdata"
+							sqlQuery="SELECT * from xpagesdemo.names ORDER BY lastname">
 						</xe:jdbcRowSet>
 					</xp:this.data>
 					<xp:dataTable id="data" rows="10" var="person"

@@ -12,6 +12,7 @@ public class Navigation implements Serializable {
 	public Navigation() {
 		this.navigation = new ArrayList<Page>();
 		this.navigation.add(new Page("JNDI", "jndi.xsp", "", false));
+		this.navigation.add(new Page("Type Ahead", "typeahead.xsp", "", false));
 
 	}
 

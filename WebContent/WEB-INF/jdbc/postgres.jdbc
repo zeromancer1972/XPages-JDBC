@@ -2,11 +2,11 @@
     <driver>org.postgresql.Driver</driver>
     
     <!-- replace host/ip and schema (demo) with your database -->
-    <url>jdbc:postgresql://192.168.2.222/demo</url>
+    <url>jdbc:postgresql://notesx.net/postgres/xpagesdemo</url>
     
     <!-- replace these with your credentials -->
-    <user>oliver</user>
-    <password>pgdemo</password>
+    <user>johndoe</user>
+    <password>password</password>
     <simple>
     	<maxPoolSize>50</maxPoolSize>
     </simple>

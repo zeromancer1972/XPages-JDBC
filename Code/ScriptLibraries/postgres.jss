@@ -1,6 +1,6 @@
 // postgres demo
 function openRecord(id){
-	var result:java.sql.ResultSet = @JdbcExecuteQuery("postgres", "SELECT * FROM names WHERE ID="+parseInt(id));
+	var result:java.sql.ResultSet = @JdbcExecuteQuery("postgres", "SELECT * FROM xpagesdemo.names WHERE ID="+parseInt(id));
 	while(result.next()){
 		// add widget
 		getComponent("lastname").setValue(result.getString("lastname"));

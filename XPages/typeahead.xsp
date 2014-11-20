@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
+	<xc:_layoutBS3 navbarTopInverse="true" color="#000"
+		hideLeftColumn="true" hideRightColumn="true">
+		<xp:this.facets>
+			<xp:div xp:key="facetMiddle">
+				<table class="table table-condensed table-hover table-striped">
+					<xp:repeat id="repeat1" rows="30" var="person">
+						<xp:this.value><![CDATA[#{javascript:var data = new org.openntf.jdbc.DataConnector();
+return data.getRecords();}]]></xp:this.value>
+						<tr>
+							<td>
+								<xp:link escape="true" id="link1">
+									<xp:this.text><![CDATA[#{javascript:person.get("lastname")}]]></xp:this.text>
+								</xp:link>
+							</td>
+							<td>
+								<xp:link escape="true" id="link2">
+									<xp:this.text><![CDATA[#{javascript:person.get("firstname")}]]></xp:this.text>
+								</xp:link>
+							</td>
+							<td>
+								<xp:link escape="true" id="link3">
+									<xp:this.text><![CDATA[#{javascript:person.get("id")}]]></xp:this.text>
+								</xp:link>
+							</td>
+						</tr>
+					</xp:repeat>
+				</table>
+				<xp:div>Type some letters in the field below</xp:div>
+				<xp:inputText id="inputText1" styleClass="form-control">
+					<xp:typeAhead mode="partial" minChars="1" ignoreCase="true">
+						<xp:this.valueList><![CDATA[#{javascript:@JdbcDbColumn("postgres", "xpagesdemo.names", "lastname")}]]></xp:this.valueList>
+					</xp:typeAhead>
+				</xp:inputText>
+			</xp:div>
+			<xp:div xp:key="facetHelp">
+				Type ahead with @JDBCDBColumn</xp:div>
+		</xp:this.facets>
+	</xc:_layoutBS3>
+</xp:view>
